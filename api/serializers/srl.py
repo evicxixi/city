@@ -40,3 +40,17 @@ class OftenAskedQuestionSer(serializers.ModelSerializer):
     class Meta:
         model = OftenAskedQuestion
         fields = '__all__'
+
+
+class CourseChapterSer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CourseChapter
+        fields = '__all__'
+
+
+class CourseSectionSer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CourseSection
+        fields = '__all__'
