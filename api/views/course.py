@@ -64,8 +64,11 @@ class Course(APIView):
                 'recommend_courses': all_recommend.data,
                 'asked_question': all_question.data,
                 'chapter_list': chapter_list,
+                # "Access-Control-Allow-Origin" : "*",
             }
-        return HttpResponse(json.dumps(data.dict, ensure_ascii=False))
+        return Response(data.dict, headers = {'Access-Control-Allow-Origin' :'*'})
+
+    # header = ('Access-Control-Allow-Origin', '*')
 
 
 [
