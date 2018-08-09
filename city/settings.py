@@ -129,3 +129,5 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSION': 'v1',
     'ALLOWED_VERSIONS': ['v1', 'v2'],
 }
+
+SHAPPING_CAR = "shopping_car_%s_%s"

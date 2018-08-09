@@ -8,10 +8,10 @@ from django.shortcuts import HttpResponse
 from django.shortcuts import render
 import json
 from api.utlis.response import BaseResponse
-
 # Create your views here.
 
 
+# 版本一 常规APIView
 class Course(APIView):
 
     def get(self, request, version, key=None):
@@ -66,28 +66,5 @@ class Course(APIView):
                 'chapter_list': chapter_list,
                 # "Access-Control-Allow-Origin" : "*",
             }
-        return Response(data.dict, headers = {'Access-Control-Allow-Origin' :'*'})
 
-    # header = ('Access-Control-Allow-Origin', '*')
-
-
-[
-    {'chapter_id': 1, 'chapter__name': '美丽俏佳人', 'children': [
-        {'id': 1, 'name': '课时1'}, {'id': 2, 'name': '课时2'}]},
-    {'chapter_id': 2, 'chapter__name': '美丽俏佳狗',
-        'children': [{'id': 3, 'name': '课时3'}, ]}
-]
-
-
-[
-    {'id': 1, 'chapter': 1, 'name': 'Django介绍', 'order': 1, 'section_type': 2,
-        'section_link': None, 'video_time': None, 'free_trail': True},
-    {'id': 2, 'chapter': 1, 'name': 'Http协议介绍', 'order': 2, 'section_type': 2,
-        'section_link': None, 'video_time': None, 'free_trail': False},
-    {'id': 3, 'chapter': 2, 'name': '路由系统介绍', 'order': 3, 'section_type': 2,
-        'section_link': None, 'video_time': None, 'free_trail': False},
-    {'id': 4, 'chapter': 2, 'name': '路由匹配规则介绍', 'order': 4, 'section_type': 2,
-        'section_link': None, 'video_time': None, 'free_trail': False},
-    {'id': 5, 'chapter': 2, 'name': '路由匹配实战', 'order': 5, 'section_type': 2,
-        'section_link': None, 'video_time': None, 'free_trail': True}
-]
+        return Response(data.dict, headers={'Access-Control-Allow-Origin': '*'})

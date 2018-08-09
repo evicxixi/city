@@ -17,9 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.urls import include
 from api import urls as api_urls
-from api import views
 from dev import urls as dev_urls
-from dev import views as dev_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),

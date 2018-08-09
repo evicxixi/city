@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path, re_path
 # from api import views
-from api.views import version, course, degree_course
+from api.views import version, course, degree_course, shopping_car
 
 urlpatterns = [
     # re_path('^degree_course/$', course.DegreeCourse.as_view()),
@@ -34,7 +34,8 @@ urlpatterns = [
     # c.展示所有的专题课
     re_path('^course/$', course.Course.as_view()),
 
-    # e.获取id = 1的专题课，并打印：课程名、级别(中文)、why_study、what_to_study_brief、所有recommend_courses
+    # e.获取id =
+    # 1的专题课，并打印：课程名、级别(中文)、why_study、what_to_study_brief、所有recommend_courses
     re_path('^course/(?P<key>\w+)/$', course.Course.as_view()),
 
 
@@ -43,4 +44,10 @@ urlpatterns = [
     # g.获取id = 1的专题课，并打印该课程相关的课程大纲
 
     # h.获取id = 1的专题课，并打印该课程相关的所有章节
+
+
+
+
+    re_path('^shopping_car/$',
+            shopping_car.ShoppingCar.as_view({'get': 'list', 'post': 'create'})),
 ]
