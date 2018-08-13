@@ -1,12 +1,15 @@
+import json
+
 from django.http import JsonResponse
-from api import models
-from rest_framework import serializers
-from rest_framework.views import APIView
-from dev.serializers import course
-from rest_framework.response import Response
 from django.shortcuts import HttpResponse
 from django.shortcuts import render
-import json
+
+from rest_framework import serializers
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from api import models
+from dev.serializers import course
 from dev.utlis.response import BaseResponse
 
 # Create your views here.

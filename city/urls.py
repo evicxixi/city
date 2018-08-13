@@ -16,13 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.urls import include
+
 from api import urls as api_urls
 from dev import urls as dev_urls
+from dev.views import intro
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('api/(?P<version>\w+)/', include(api_urls)),
     re_path('dev/(?P<version>\w+)/', include(dev_urls)),
+    re_path('intro/', intro.intro),
+    re_path('get_qrcode/', intro.get_qrcode),
+    re_path('get_wx_id/', intro.get_wx_id),
     # re_path('^$',views.DegreeCourse.as_view()),
     # re_path('^$',views.DegreeCourse.as_view()),
 ]
+# TypeError: view must be a callable or a list / tuple in the case of
+# include().

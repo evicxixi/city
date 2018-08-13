@@ -15,39 +15,23 @@ ret = requests.get(  # 使用模块requests
     }
 )
 access_token = json.loads(ret.text)['access_token']  # json反序列化为dict
+print(ret.text)
+
+# 第二步 获取指定用户openid（引导用户绑定主站账户与微信账户）
+openid = 'orGaTtyWl9JwMsii2Oxz58GdPFYg'
 
 
-# 第二步 发送模板消息
+# 第三步 发送模板消息
 body = {
-    "touser": "orGaTt1HyNQiKwTEbLOv69_N7SlM",
+    "touser": openid,
     "template_id": "ZqzReF4TLXpvigwFtVoc6NDEVlR1gA0JCyh98rBjpkA",
-    "url": "http://weixin.qq.com/download",
-           "miniprogram": {
-               "appid": "xiaochengxuappid12345",
-               "pagepath": "index?foo=bar"
-           },
+
     "data": {
-               "first": {
-                   "value": "恭喜你购买成功！",
-                   "color": "#173177"
-               },
-               "keyword1": {
-                   "value": "巧克力",
-                   "color": "#173177"
-               },
-               "keyword2": {
-                   "value": "39.8元",
-                   "color": "#173177"
-               },
-               "keyword3": {
-                   "value": "2014年9月22日",
-                   "color": "#173177"
-               },
-               "remark": {
-                   "value": "欢迎再次购买！",
-                   "color": "#173177"
-               }
-           }
+        "keyword1": {
+            "value": "巧克力",
+            "color": "#173177"
+        },
+    }
 }
 
 send = requests.post(
@@ -58,3 +42,5 @@ send = requests.post(
     },
     data=json.dumps(body),
 )
+print(send)
+print(send.text)
