@@ -19,15 +19,15 @@ from django.urls import include
 
 from api import urls as api_urls
 from dev import urls as dev_urls
-from dev.views import intro
+from dev.views import get_wx_id
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('api/(?P<version>\w+)/', include(api_urls)),
     re_path('dev/(?P<version>\w+)/', include(dev_urls)),
-    re_path('intro/', intro.intro),
-    re_path('get_qrcode/', intro.get_qrcode),
-    re_path('get_wx_id/', intro.get_wx_id),
+    re_path('intro/', get_wx_id.intro),
+    re_path('get_qrcode/', get_wx_id.get_qrcode),
+    re_path('get_wx_id/', get_wx_id.get_wx_id),
     # re_path('^$',views.DegreeCourse.as_view()),
     # re_path('^$',views.DegreeCourse.as_view()),
 ]

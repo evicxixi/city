@@ -15,8 +15,6 @@ def intro(request):
 
 def get_qrcode(request):
     data = {'status': True, 'data': None}
-    print('get_qrcode')
-
     access_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={appid}&redirect_uri={redirect_uri}&response_type=code&scope=snsapi_userinfo&state={state}#wechat_redirect"
     url = access_url.format(
         appid='wx45351926e9ed39ac',
@@ -26,16 +24,12 @@ def get_qrcode(request):
         state=1  # 用户ID
     )
     data['data'] = url
-    print('get_qrcode -----')
     return JsonResponse(data)
 
 
 def get_wx_id(request):
-    print('get_wx_id')
     code = request.GET.get("code")
     state = request.GET.get("state")
-    print('code', code)
-    print('state', state)
 
     # 获取该用户openId(用户唯一，用于给用户发送消息)
     r1 = requests.get(
@@ -48,9 +42,11 @@ def get_wx_id(request):
         }
     ).json()
     open_id = r1.get("openid")  # 能够获取到openid表示用户授权成功
+    print(open_id)  # 当前似乎有bug 获得openid后又会发起好几次回应
     if not open_id:
         return HttpResponse('授权失败！')
-    # 假设用户已存在 并存库
+
+    # 假设用户已存在 并存库的版本
     # user = models.UserInfo.objects.filter(id=state).first()
     # if not user.open_id:
     #     user.wx_id = open_id
