@@ -19,8 +19,8 @@ def get_qrcode(request):
     access_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={appid}&redirect_uri={redirect_uri}&response_type=code&scope=snsapi_userinfo&state={state}#wechat_redirect"
     url = access_url.format(
         appid='wx45351926e9ed39ac',
-        redirect_uri="http://127.0.0.1:8000/get_wx_id/",  # 跳转回我的网站
-        # redirect_uri="http://118.24.111.198:8000/get_wx_id/",  # 跳转会我的网站
+        # redirect_uri="http://127.0.0.1:8000/get_wx_id/",  # 跳转回我的网站
+        redirect_uri="http://118.24.111.198:8000/get_wx_id/",  # 跳转回我的网站
         # state=request.session['user_info']['id']  # 用户ID
         state=1  # 用户ID
     )
