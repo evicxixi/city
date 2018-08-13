@@ -15,6 +15,7 @@ def intro(request):
 
 def get_qrcode(request):
     data = {'status': True, 'data': None}
+    print('get_qrcode')
 
     access_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={appid}&redirect_uri={redirect_uri}&response_type=code&scope=snsapi_userinfo&state={state}#wechat_redirect"
     url = access_url.format(
@@ -25,6 +26,7 @@ def get_qrcode(request):
         state=1  # 用户ID
     )
     data['data'] = url
+    print('get_qrcode -----')
     return JsonResponse(data)
 
 
@@ -39,8 +41,8 @@ def get_wx_id(request):
     r1 = requests.get(
         url="https://api.weixin.qq.com/sns/oauth2/access_token",
         params={
-            "appid": 'wx65d37317efb972e0',
-            "secret": 'f59dc1e2f5e3641145a213027fb122cc',
+            "appid": 'wx45351926e9ed39ac',
+            "secret": '4b91671be73c8e559d6eaa17fc60216b',
             "code": code,
             "grant_type": 'authorization_code',
         }
