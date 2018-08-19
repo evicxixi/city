@@ -88,18 +88,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
 
 
@@ -131,6 +123,22 @@ REST_FRAMEWORK = {
     'VESION_PRARM ': 'version',
     'DEFAULT_VERSION': 'v1',
     'ALLOWED_VERSIONS': ['v1', 'v2'],
+    'DEFAULT_AUTHENTICATION_CLASSES': ['api.utlis.auth.CityAuthentication', ],
 }
 
 SHAPPING_CAR = "shopping_car_%s_%s"
+PAYMENT = "payment_%s_%s"
+GLOBAL_COUPON = 'global_coupon_%s'
+
+# 全局redis
+CACHES = {
+    "default": {    # 别名 可设置多个
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://118.24.111.198:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100},
+            "PASSWORD": "nut37738925",
+        }
+    }
+}

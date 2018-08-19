@@ -16,20 +16,20 @@ Including another URLconf
 
 from django.urls import path, re_path
 # from api import views
-from api.views import version, course, degree_course, shopping_car
+from api.views import version, course, degreecourse, shoppingcar, coupon, payment, settlement
 
 urlpatterns = [
     # re_path('^degree_course/$', course.DegreeCourse.as_view()),
     re_path('^version/$', version.Version.as_view()),
 
     # a.查看所有学位课并打印学位课名称以及授课老师
-    re_path('^degree_course/$', degree_course.DegreeCourse.as_view()),
+    re_path('^degree_course/$', degreecourse.DegreeCourse.as_view()),
 
 
     # b.查看所有学位课并打印学位课名称以及学位课的奖学金 (b和c共用一个url)
     # d. 查看id=1的学位课对应的所有模块名称
     re_path('^degree_course/(?P<key>\w+)/$',
-            degree_course.DegreeCourse.as_view()),
+            degreecourse.DegreeCourse.as_view()),
 
     # c.展示所有的专题课
     re_path('^course/$', course.Course.as_view()),
@@ -48,6 +48,29 @@ urlpatterns = [
 
 
 
-    re_path('^shopping_car/$',
-            shopping_car.ShoppingCar.as_view({'get': 'list', 'post': 'create'})),
+
+
+
+
+    # 优惠券
+    re_path('^coupon/$', coupon.Coupon.as_view()),
+    re_path('^coupon/(?P<pk>\d+)/$', coupon.CouponDetail.as_view()),
+    re_path('^coupon_global/$', coupon.CouponGlobal.as_view()),
+    re_path('^coupon_global/(?P<pk>\d+)/$', coupon.CouponGlobal.as_view()),
+
+    # 购物车
+    re_path('^shoppingcar/$',
+            shoppingcar.ShoppingCar.as_view({'get': 'list', 'post': 'create'})),
+
+    # 结算中心
+    re_path('^payment/$',
+            payment.Payment.as_view({'get': 'list', 'post': 'create'})),
+
+    # 结算
+    re_path('^settlement/$',
+            settlement.Settlement.as_view({'get': 'list', 'post': 'create'})),
+
+
+
+
 ]

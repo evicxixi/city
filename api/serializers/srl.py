@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import ValidationError
-from api.models import CourseCategory, CourseSubCategory, DegreeCourse, Teacher, Scholarship, Course, CourseDetail, OftenAskedQuestion, CourseOutline, CourseChapter, CourseSection, Homework, PricePolicy
+from api.models import CourseCategory, CourseSubCategory, DegreeCourse, Teacher, Scholarship, Course, CourseDetail, OftenAskedQuestion, CourseOutline, CourseChapter, CourseSection, Homework, PricePolicy, Coupon, CouponRecord, Account
 
 
 class CourseSer(serializers.ModelSerializer):
@@ -53,4 +53,25 @@ class CourseSectionSer(serializers.ModelSerializer):
 
     class Meta:
         model = CourseSection
+        fields = '__all__'
+
+
+class CouponSer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Coupon
+        fields = '__all__'
+
+
+class CouponRecordSer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CouponRecord
+        fields = '__all__'
+
+
+class AccountSer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Account
         fields = '__all__'

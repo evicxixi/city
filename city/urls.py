@@ -20,9 +20,14 @@ from django.urls import include
 from api import urls as api_urls
 from dev import urls as dev_urls
 from dev.views import get_wx_id
+from dev.views import index
+from api.views import auth
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('^$', index.index),
+    # url(r'auth/$',auth.AuthView.as_view({'post':'login'})),
+    re_path('login/', auth.AuthView.as_view({'post': 'login'})),
     re_path('api/(?P<version>\w+)/', include(api_urls)),
     re_path('dev/(?P<version>\w+)/', include(dev_urls)),
     re_path('intro/', get_wx_id.intro),
